@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
 //for the key, goto authentication->signinMethod->email/password->project settings(on clicking right corner side)
-const signUpApi =
-  "";
+const signUpApi = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCIYs9Qg0Yl5Pg2YeA-3spg45Dgs7TJi_c";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
@@ -102,7 +103,12 @@ const SignUp = () => {
         </div>
       </div>
       <div class="d-grid gap-2 mt-3 mx-auto" style={{ width: "300px" }}>
-        <button class="btn btn-outline-info" type="button">
+        <button
+          class="btn btn-light"
+          type="button"
+          style={{ backgroundColor: "rgba(0, 255, 255, 0.074)" }}
+          onClick={() => navigate("/login", { replace: true })}
+        >
           Have an account? LogIn
         </button>
       </div>
