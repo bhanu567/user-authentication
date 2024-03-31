@@ -1,8 +1,11 @@
 import React, { useRef } from "react";
 import icon from "../Images/eye.png";
 import { useNavigate } from "react-router-dom";
+import { key } from "./Home";
+
 const logInApi =
-  "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCIYs9Qg0Yl5Pg2YeA-3spg45Dgs7TJi_c";
+  "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
+  key;
 
 const LogIn = () => {
   const navigate = useNavigate();

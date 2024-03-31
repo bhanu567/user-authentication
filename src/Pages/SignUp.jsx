@@ -1,8 +1,11 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
+import { key } from "./Home";
+
 //for the key, goto authentication->signinMethod->email/password->project settings(on clicking right corner side)
-const signUpApi = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCIYs9Qg0Yl5Pg2YeA-3spg45Dgs7TJi_c";
+const signUpApi =
+  "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + key;
 
 const SignUp = () => {
   const navigate = useNavigate();
