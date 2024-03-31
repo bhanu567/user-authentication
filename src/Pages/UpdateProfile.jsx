@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import githubLogo from "../Images/github-logo.png";
 import internet from "../Images/world-wide-web.png";
 import { key } from "./Home";
@@ -6,7 +6,33 @@ import { key } from "./Home";
 const updateApi =
   "https://identitytoolkit.googleapis.com/v1/accounts:update?key=" + key;
 
+const getDataApi =
+  "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=" + key;
+
 const UpdateProfile = () => {
+  useEffect(() => {
+    const idToken = localStorage.getItem("idToken");
+    async function getUserData() {
+      try {
+        const response = await fetch(getDataApi, {
+          method: "POST",
+          body: JSON.stringify({
+            idToken: idToken,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const responseData = await response.json();
+        if (responseData.error) throw responseData.error;
+        nameRef.current.value = responseData.users[0].displayName;
+        photoRef.current.value = responseData.users[0].photoUrl;
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+    if (idToken) getUserData();
+  }, []);
   const nameRef = useRef();
   const photoRef = useRef();
   const profileUpdateHandler = async (e) => {
@@ -30,13 +56,14 @@ const UpdateProfile = () => {
       const responseData = await response.json();
       if (responseData.error) throw responseData.error;
       else alert("Data has been Updated Successfully.");
-      localStorage.setItem("idToken", responseData.idToken);
+      localStorage.setItem("idToken", idToken);
       nameRef.current.value = "";
       photoRef.current.value = "";
     } catch (error) {
       alert(error.message);
     }
   };
+
   return (
     <div>
       <div
