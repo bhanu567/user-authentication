@@ -3,6 +3,7 @@ import SignUp from "./Pages/SignUp";
 import LogIn from "./Pages/LogIn";
 import Home from "./Pages/Home";
 import UpdateProfile from "./Pages/UpdateProfile";
+import EmailVerification from "./Pages/EmailVerification";
 
 const Router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const Router = createBrowserRouter([
   {
     path: "/updateprofile",
     element: <UpdateProfile />,
+  },
+  {
+    path: "/emailverification",
+    element: <EmailVerification />,
   },
 ]);
 

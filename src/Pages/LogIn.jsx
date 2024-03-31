@@ -34,7 +34,8 @@ const LogIn = () => {
         localStorage.setItem("idToken", responseData.idToken);
         emailRef.current.value = "";
         passwordRef.current.value = "";
-        navigate("/", { replace: true });
+
+        navigate("/emailverification", { replace: true });
       } catch (error) {
         alert(error.message);
       }
