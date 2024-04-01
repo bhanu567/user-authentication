@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import icon from "../Images/eye.png";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { key } from "./Home";
 
 const logInApi =
@@ -88,7 +88,7 @@ const LogIn = () => {
             </button>
           </div>
           <div className="border-0" style={{ textAlign: "center" }}>
-            <a href="/">Forget Password</a>
+            <NavLink to="/forgetpassword">Forget Password</NavLink>
           </div>
         </form>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-export const key = "AIzaSyCIYs9Qg0Yl5Pg2YeA-3spg45Dgs7TJi_c";
+export const key = "";
 
 const Home = () => {
   const navigate = useNavigate();
